@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from interviewer_app.models import Candidate, Score
 from django.http import HttpResponseBadRequest
+from django.db.models import Sum
 # Create your views here.
 
 
@@ -93,7 +94,7 @@ def rate_candidate(request, candidate_id=None, template="rate_candidate.html"):
     score_details = Score.objects.filter(candidate=candidate_detail, interviwer=request.user).first()
     return render(request, template, {"candidate": candidate_detail, "score_detail": score_details})
 
-from django.db.models import Sum
+
 @login_required(login_url="/login")
 def get_results(request, template="get_results.html"):
     credintials_pass = False
@@ -111,7 +112,7 @@ def get_results(request, template="get_results.html"):
                 messages.add_message(request, messages.ERROR, "Passowrd for interviewer 1 is incorrect.Please try again.")
                 return render(request, template)
         else:
-            messages.add_message(request, messages.ERROR, "Iterviewer 1 doesnot exist. Please try again")
+            messages.add_message(request, messages.ERROR, "Interviewer 1 doesnot exist. Please try again")
             return render(request, template)
 
         user2 = User.objects.filter(username=username2).first()
@@ -120,7 +121,7 @@ def get_results(request, template="get_results.html"):
                 messages.add_message(request, messages.ERROR, "Passowrd for interviewer 2 is incorrect.Please try again.")
                 return render(request, template)
         else:
-            messages.add_message(request, messages.ERROR, "Iterviewer 2 doesnot exist. Please try again")
+            messages.add_message(request, messages.ERROR, "Interviewer 2 doesnot exist. Please try again")
             return render(request, template)
 
         user3 = User.objects.filter(username=username3).first()
@@ -129,7 +130,7 @@ def get_results(request, template="get_results.html"):
                 messages.add_message(request, messages.ERROR, "Passowrd for interviewer 3 is incorrect.Please try again.")
                 return render(request, template)
         else:
-            messages.add_message(request, messages.ERROR, "Iterviewer 3 doesnot exist. Please try again")
+            messages.add_message(request, messages.ERROR, "Interviewer 3 doesnot exist. Please try again")
             return render(request, template)
         credintials_pass = True
 

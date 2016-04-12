@@ -6,9 +6,10 @@
 {% block content %}
 {% if candidates %}
   {% for candidate in candidates %}
-  <div class="w3-container w3-card-4 w3-light-grey">
+  
       <div class="panel panel-default">
         <div class="panel-body">
+		<div class="w3-container w3-light-grey w3-border">
         First Name : {{ candidate.first_name}}<br/>
         Last Name : {{ candidate.last_name}} <br/>
         Email : {{ candidate.email}} <br/>
