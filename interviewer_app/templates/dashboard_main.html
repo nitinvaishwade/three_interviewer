@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %} {{ block.super }} Dashboard {% endblock %}
+{% block dashboard_selected %} class="active" {% endblock %}
+
+
+{% block content %}
+<br><br>
+{% for candidate in all_candidates %}
+      <div class="panel panel-default" style="width:400px; float:left;">
+        <div class="panel-body">
+        First Name : {{ candidate.first_name}}<br/>
+        Last Name : {{ candidate.last_name}} <br/>
+        Email : {{ candidate.email}} <br/>
+        <a href="/scoring/rate_candidate/{{candidate.id}}" > Rate Candidate</a>
+        </div>
+      </div>
+{% endfor %}
+{% endblock %}

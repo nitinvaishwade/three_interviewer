@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %} {{ block.super }} Dashboard {% endblock %}
+{% block show_results_selected %} class="active" {% endblock %}
+
+
+{% block content %}
+<div class="panel panel-default">
+        <div class="panel-body">
+        <H4>You are Rating Candidate {{ candidate.first_name}}.</H4>
+        First Name : {{ candidate.first_name}}, Last Name : {{ candidate.last_name}} , Email : {{ candidate.email}} <br/>
+
+        <br/><br/>
+        {% if score_detail %}
+            <strong>Your Current Score for the Candidate is : {{ score_detail.score }}</strong>
+            <p> If you want to edit you score please use bellow form</p>
+        {% endif %}
+        <form action="/scoring/rate_candidate/{{candidate.id}}/" method="post" role="form form-inline">
+         {% csrf_token %}
+          Score : <input type="number" name="score" required min="1" value="{{score_detail.score}}" max="5"></br>
+          <input type="submit" value="Submit" />
+            <input type="reset" value="Reset" />
+        </form>
+        </div>
+      </div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %} {{ block.super }} Dashboard {% endblock %}
+{% block dashboard_selected %} class="active" {% endblock %}
+
+
+{% block content %}
+{% if candidates %}
+  {% for candidate in candidates %}
+      <div class="panel panel-default">
+        <div class="panel-body">
+        First Name : {{ candidate.first_name}}<br/>
+        Last Name : {{ candidate.last_name}} <br/>
+        Email : {{ candidate.email}} <br/>
+        Total Score : {{ candidate.total_score }}
+        </div>
+      </div>
+{% endfor %}
+
+{% else %}
+  <H4>For Viewing the results Three Interviewer Must enter there credintials</H4><br/><br/>
+  <div class="list-group col-sm-8">
+   <div class="panel panel-default">
+          <div class="panel-body">
+          <form action="/scoring/get_results/" method="post" role="form form-inline">
+           {% csrf_token %}
+           <div class="panel panel-default">
+          <div class="panel-body">
+            Interviewer1 Username: <input type="text" name="username1" required><br>
+            Interviewer1 Password: <input type="password" name="password1" required><br>
+          </div>
+          <div class="panel-body">
+            Interviewer2 Username: <input type="text" name="username2" required><br>
+            Interviewer2 Password: <input type="password" name="password2" required><br>
+          </div>
+          <div class="panel-body">
+            Interviewer3 Username: <input type="text" name="username3" required><br>
+            Interviewer3 Password: <input type="password" name="password3" required><br>
+          </div>
+          </div>
+            <input type="submit" value="Submit" />
+            <input type="reset" value="Reset" />
+          </form>
+   </div>
+          </div>
+  </div>
+{% endif %}
+{% endblock %}
