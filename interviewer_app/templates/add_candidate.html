@@ -1,12 +1,14 @@
 {% extends "base.html" %}
-{% block title %} {{ block.super }} Dashboard {% endblock %}
+{% block title %} {{ block.super }} Add_Candidate {% endblock %}
 {% block add_candidate_selected %} class="active" {% endblock %}
 
 
 {% block content %}
-<div class="list-group col-sm-8">
-        <form action="/scoring/add_candidate/" method="post" role="form form-inline">
-         {% csrf_token %}
+<div >
+        
+        <form action="/scoring/add_candidate/" method="post" role="form form-inline" class="w3-container w3-card-4 w3-light-grey">
+         <h2>Add Candidate</h2>
+		 {% csrf_token %}
           First name:<br>
           <input type="text" name="firstname" required><br>
           Last name:<br>

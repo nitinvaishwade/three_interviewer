@@ -4,15 +4,19 @@
 
 
 {% block content %}
-<br><br>
+<h2>Candidate List</h2>	
+<table class="w3-table w3-striped">
+<tr><th><h2>First_name</h2></th><th><h2>last_name</h2></th><th><h2>Email</h2></th><th><h2>Rating</h2></th></tr>
 {% for candidate in all_candidates %}
-      <div class="panel panel-default" style="width:400px; float:left;">
-        <div class="panel-body">
-        First Name : {{ candidate.first_name}}<br/>
-        Last Name : {{ candidate.last_name}} <br/>
-        Email : {{ candidate.email}} <br/>
-        <a href="/scoring/rate_candidate/{{candidate.id}}" > Rate Candidate</a>
-        </div>
-      </div>
+      <tr>
+           <td><h3>  {{ candidate.first_name}}</h3></td>
+           <td><h3>{{candidate.last_name}} </h3></td>
+           <td><h3>  {{ candidate.email}}</h3></td> 
+           <td><h3>  <a href="/scoring/rate_candidate/{{candidate.id}}" > Rate Candidate</a></h3></td></tr>
+      
+      
 {% endfor %}
+</table>
 {% endblock %}
+<!--<div class="panel panel-default" style="width:400px; float:left;">
+        <div class="panel-body">-->

@@ -1,11 +1,12 @@
 {% extends "base.html" %}
-{% block title %} {{ block.super }} Dashboard {% endblock %}
+{% block title %} {{ block.super }} result {% endblock %}
 {% block dashboard_selected %} class="active" {% endblock %}
 
 
 {% block content %}
 {% if candidates %}
   {% for candidate in candidates %}
+  <div class="w3-container w3-card-4 w3-light-grey">
       <div class="panel panel-default">
         <div class="panel-body">
         First Name : {{ candidate.first_name}}<br/>
@@ -14,10 +15,13 @@
         Total Score : {{ candidate.total_score }}
         </div>
       </div>
+	   </div>
 {% endfor %}
 
 {% else %}
-  <H4>For Viewing the results Three Interviewer Must enter there credintials</H4><br/><br/>
+<div class="w3-container w3-card-4 w3-light-grey">
+
+  <H3>For Viewing the results Three Interviewer Must enter there credintials</H3><br/><br/>
   <div class="list-group col-sm-8">
    <div class="panel panel-default">
           <div class="panel-body">
@@ -25,7 +29,7 @@
            {% csrf_token %}
            <div class="panel panel-default">
           <div class="panel-body">
-            Interviewer1 Username: <input type="text" name="username1" required><br>
+            Interviewer1 Username: <input type="text" name="username1" required ><br>
             Interviewer1 Password: <input type="password" name="password1" required><br>
           </div>
           <div class="panel-body">
@@ -42,6 +46,6 @@
           </form>
    </div>
           </div>
-  </div>
+  </div></div>
 {% endif %}
 {% endblock %}
