@@ -39,6 +39,21 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
+										{% if messages %}
+            <ul class="messages">
+            {% for message in messages %}
+            <p {% if message.tags == "error"%}
+                     class="alert alert-danger"
+                 {% elif message.tags == "success" %}
+                    class="alert alert-success"
+                 {% else %}
+                    class="alert alert-info"
+                 {% endif %}>{{ message}}
+            </p>
+            {% endfor %}
+			</ul>
+			
+        {% endif %}
                         <h3 class="panel-title">Interviewer Sign Up Form</h3>
                     </div>
                     <div class="panel-body">
